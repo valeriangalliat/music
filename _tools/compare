@@ -1,0 +1,16 @@
+#!/bin/sh -e
+
+dir=$1; shift
+
+generate_archive() {
+    (cd "$dir" && find .) \
+        | grep -o '...............$' \
+        | sed 's/^/youtube /' | sed 's/\.mp3$//'
+}
+
+generate_archive | sort > .tmp.generated-archive.txt
+sort "$dir/archive.txt" > .tmp.archive.txt
+
+git diff --no-index .tmp.generated-archive.txt .tmp.archive.txt || :
+
+rm .tmp.generated-archive.txt .tmp.archive.txt
