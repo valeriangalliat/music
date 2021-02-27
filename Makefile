@@ -1,4 +1,4 @@
-all: 2018-11 2020-03
+all: 2018-11 2020-03 Sensimilia Mixtapes
 
 .PHONY: 2018-11
 2018-11:
@@ -15,3 +15,7 @@ Sensimilia:
 .PHONY: Reggae
 Reggae:
 	cd $@ && youtube-dl -i -x --audio-format mp3 --download-archive archive.txt 'https://www.youtube.com/playlist?list=PL3gQ6-WYh7kWcXvOFmgAzUIJ4Pgtdg49T'
+
+.PHONY: Mixtapes
+Mixtapes:
+	cd $@ && youtube-dl -i -x --audio-format mp3 --download-archive archive.txt 'https://www.youtube.com/playlist?list=PL3gQ6-WYh7kU5pYwHGao2WedHRa8fS42g'
